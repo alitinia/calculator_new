@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editText;
     private Button buttonX2, buttonCC;
     private ViewGroup rootView;
-    private String[] opList = {"+", "-", "=", "/", "*"};
+    private String[] opList = {"+", "-", "=", "/", "*", "r", "^"};
     private String buttonString;
     private double tmpRes = 0;
     private String currentOp = null;
