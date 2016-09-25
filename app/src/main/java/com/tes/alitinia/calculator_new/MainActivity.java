@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button buttonsqroot = (Button) findViewById(R.id.buttonsqroot);
-        buttonsqroot.setText(Html.fromHtml("x<sup>2</sup>"));
+       // Button buttonsqroot = (Button) findViewById(R.id.buttonsqroot);
+      //  buttonsqroot.setText(Html.fromHtml("x<sup>2</sup>"));
         editText = (EditText) findViewById(R.id.editText);
         editText.setText("0");
         Button buttonCC = (Button) findViewById(R.id.buttonCC);
@@ -113,9 +113,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     currentOp = "-";
                 }
                 break;
-            case R.id.buttonroot:
+            case R.id.buttonpow:
+                if (currentOp == null) {
+                    tmpRes = Double.parseDouble(editText.getText().toString());
+                    currentOp = "^";
+                //    editText.setText("0");
+                } else if (currentOp != "^") {
+                    currentOp = "^";
+                } hitungOperasi();
                 break;
             case R.id.buttonsqroot:
+                if (currentOp == null) {
+                    tmpRes = Double.parseDouble(editText.getText().toString());
+                    currentOp = "sqroot";
+                 //   editText.setText("0");
+                } else if (currentOp != "sqroot") {
+                    currentOp = "sqroot";
+                } hitungOperasi();
                 break;
             case R.id.buttonequal:
                 if (currentOp != null) {
@@ -156,6 +170,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "/":
                 tmp = tmp / tmpRes;
+                currentOp = null;
+                editText.setText(String.valueOf(tmp));
+                break;
+            case "^":
+                tmp = Math.pow(tmp, 2);
+                currentOp = null;
+                editText.setText(String.valueOf(tmp));
+                break;
+            case "sqroot":
+                tmp = Math.sqrt(tmp);
                 currentOp = null;
                 editText.setText(String.valueOf(tmp));
                 break;
